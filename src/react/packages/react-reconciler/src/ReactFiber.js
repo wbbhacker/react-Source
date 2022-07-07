@@ -585,11 +585,11 @@ export function createHostRootFiber(tag: RootTag): Fiber {
   // 根据 tag 值设置 mode
   let mode;
   if (tag === ConcurrentRoot) {
-    mode = ConcurrentMode | BlockingMode | StrictMode;
+    mode = ConcurrentMode | BlockingMode | StrictMode; // 0b0100 | 0b0010 | 0b0001 === 7
   } else if (tag === BlockingRoot) {
-    mode = BlockingMode | StrictMode;
+    mode = BlockingMode | StrictMode; // 0b0010 |  0b0001   === 3
   } else {
-    mode = NoMode;
+    mode = NoMode; //0b0000
   }
 
   if (enableProfilerTimer && isDevToolsPresent) {
